@@ -1,0 +1,19 @@
+{
+  "name": "api-movie",
+  "version": "1.0.0",
+  "description": "Api de practica para consumo de API REST con JavaScript",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/David-jughead/API-movie.git"
+  },
+  "author": "David Rivera <makutososa300@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/David-jughead/API-movie/issues"
+  },
+  "homepage": "https://github.com/David-jughead/API-movie#readme"
+}
