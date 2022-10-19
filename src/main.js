@@ -88,3 +88,10 @@ async function getMoviesBySearch(query) {
   
   createMovies(movies, generiSection);
 }
+
+async function getTrendingMovies() {
+  const { data } = await api('trending/movie/day');  
+  const movies = data.results;
+  
+  createMovies(movies, generiSection);
+}
