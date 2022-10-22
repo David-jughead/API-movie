@@ -7,6 +7,7 @@ const api = axios.create({
   },
   params: {
     'api_key': API_KEY,
+    // 'language': navigator.lenguage || 'es-ES'
   },
 });
 
@@ -26,10 +27,16 @@ function likedMoviesList() {
 function likeMovie(movie) {
   const likedMovies = likedMoviesList();
   
+  console.log(likedMovies)
+
   if (likedMovies[movie.id]) {
     likedMovies[movie.id] = undefined;
   } else {
     likedMovies[movie.id] = movie;
+  }
+
+  if (location.hash == '') {
+    homePage();
   }
 
   localStorage.setItem('liked_movies', JSON.stringify(likedMovies));
@@ -82,6 +89,7 @@ function createMovies(
 
     const movieBtn = document.createElement('button');
     movieBtn.classList.add('movie-btn');
+    likedMoviesList()[movie.id] && movieBtn.classList.add('movie-btn--liked');
     movieBtn.addEventListener('click', () => {
       movieBtn.classList.toggle('movie-btn--liked');
       likeMovie(movie);
@@ -289,4 +297,13 @@ async function getRelatedMoviesId(id) {
   const relatedMovies = data.results;
 
   createMovies(relatedMovies, relatedMoviesContainer);
+}
+
+function getLikedMovies() {
+  const likedMovies = likedMoviesList();
+  const moviesArray  = Object.values(likedMovies);
+
+  createMovies(moviesArray, likedMoviesListArticle, { lazyload: false, clean: true })
+
+  console.log(likedMovies)
 }
